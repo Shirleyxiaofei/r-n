@@ -1,31 +1,10 @@
 import React from 'react';
 // import logo from './logo.svg';
-import './App.css';
+import styles from './Index.module.css';
 
-// function App() {
-//   return (
-//     // <div className="App">
-//     // <header className="App-header">
-//     //   <img src={logo} className="App-logo" alt="logo" />
-//     //   <p>
-//     //     Edit <code>src/App.js</code> and save to reload.
-//     //   </p>
-//     //   <a
-//     //     className="App-link"
-//     //     href="https://reactjs.org"
-//     //     target="_blank"
-//     //     rel="noopener noreferrer"
-//     //   >
-//     //     Learn React
-//     //   </a>
-//     // </header>
-//     // </div>
-//     <div></div>
-//   );
-// }
 function Header(props) {
   return (
-    <header className="login-header">
+    <header className={styles['login-header']}>
       <h2>{props.name}</h2>
     </header>
   )
@@ -46,7 +25,7 @@ class Login extends React.Component {
       alert("请输入密码")
     } else {
       console.log('this.props', this.props);
-      // this.props.history.push('/homePage')
+      this.props.history.push('/homePage')
     }
     e.preventDefault();
   }
@@ -62,33 +41,30 @@ class Login extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          <span className="label-name">Name:</span>
+          <span className={styles['label-name']}>Name:</span>
 
           <input name="userName" type="text" value={this.state.userName} onChange={this.handleChange}></input>
         </label>
         <br />
         <label>
-          <span className="label-name">Password:</span>
+          <span className={styles['label-name']}>Password:</span>
 
           <input name="passWord" type="text" value={this.state.passWord} onChange={this.handleChange}></input>
         </label>
         <br />
-        <input className="submit-login" type="submit" value="Submit"></input>
+        <input className={styles['submit-login']} type="submit" value="Submit"></input>
       </form>
     )
   }
 
 }
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
-      <div className="App App-header">
-        <div className="login-back">
+      <div className={`${styles['App']} ${styles['App-header']}`}>
+        <div className={styles['login-back']}>
           <Header name="登录" />
-          <Login />
+          <Login {...this.props} />
         </div>
       </div>
     )

@@ -1,11 +1,11 @@
 import React from 'react'
-import './homePage.css'
+import styles from './homePage.module.css'
 
 
 
 function Header(props) {
   return (
-    <header className="login-header">
+    <header className={styles['login-header']}>
       <h2>{props.name}</h2>
     </header>
   )
@@ -13,8 +13,8 @@ function Header(props) {
 class HomePage extends React.Component {
   render() {
     return (
-      <div className="App App-header">
-        <div className="login-back">
+      <div className={`${styles['App']} ${styles['App-header']}`}>
+        <div className={styles['login-back']}>
           <Header name="eeeee" />
         </div>
       </div>
